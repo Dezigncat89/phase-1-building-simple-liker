@@ -2,11 +2,12 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-fetch (imgURL)
+// Creates a Like Button and Keeps Count
+fetch (http://mimicServer.example.com)
   .then (res => res.json())
   .then (showImg)
 const showImg = (jsonImg) => {
-  const imgCall = document.querySelector("#image_card")
+  const imgCall = document.querySelector("#modal")
   imgCall.dataset.id = jsonImg.id
   imgCall.innerHTML = `
     <img src="${jsonImg.url}" id="image" data-id="${jsonImg.id}"/>
@@ -19,7 +20,7 @@ const showImg = (jsonImg) => {
 }
 
 const showImg = (jsonImg) => {
-  const imgCall = document.querySelector("#image_card")
+  const imgCall = document.querySelector("#modal")
   imgCall.dataset.id = jsonImg.id
   imgCall.innerHTML = `
     <img src="${jsonImg.url}" id="image" data-id="${jsonImg.id}"/>
@@ -39,7 +40,7 @@ const likeButton = (event) => {
   num1 = parseInt(likes.innerText)
   num1 += 1
   likes.innerText = num1
-  fetch (likeURL, {
+  fetch (http://mimicServer.example.com, {
     method: "POST",
     headers: {
       "Accept": 'application/json',
