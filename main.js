@@ -2,55 +2,26 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-// Creates a Like Button and Keeps Count
-fetch (http://mimicServer.example.com)
-  .then (res => res.json())
-  .then (showImg)
-const showImg = (jsonImg) => {
-  const imgCall = document.querySelector("#modal")
-  imgCall.dataset.id = jsonImg.id
-  imgCall.innerHTML = `
-    <img src="${jsonImg.url}" id="image" data-id="${jsonImg.id}"/>
-    <h4 id="name">${jsonImg.name}</h4>
-    <span>Likes:
-      <span id="likes">${jsonImg.like_count}</span>
-    </span>
-    <button id="like_button">Like</button>
-  `
-}
+//Handles Response Error Codes
+fetch('http://mimicServer.example.com').then(function (response) {
+	if (response.ok) {
+		return response.json();
+	} else {
+		return Promise.reject(response);
+	}
+}).then(function (anyData) {
+	console.log(anyData);
+}).catch(function (error) {
+	console.warn('Does Not Exist.', error);
+});
 
-const showImg = (jsonImg) => {
-  const imgCall = document.querySelector("#modal")
-  imgCall.dataset.id = jsonImg.id
-  imgCall.innerHTML = `
-    <img src="${jsonImg.url}" id="image" data-id="${jsonImg.id}"/>
-    <h4 id="name">${jsonImg.name}</h4>
-    <span>Likes:
-      <span id="likes">${jsonImg.like_count}</span>
-    </span>
-    <button id="like_button">Like</button>
-  ` 
-  const myButton = document.querySelector("#like_button")
-  myButton.addEventListener("click", likeButton)
-}
+// Creates a heart button
+$(".heart.fa").click(function() {
+  $(this).toggleClass("fa-heart fa-heart-o");
+});
 
-const likeButton = (event) => {
-  id = parseInt(event.target.parentElement.dataset.id)
-  let likes = document.querySelector("#likes")
-  num1 = parseInt(likes.innerText)
-  num1 += 1
-  likes.innerText = num1
-  fetch (http://mimicServer.example.com, {
-    method: "POST",
-    headers: {
-      "Accept": 'application/json',
-      "Content-Type": 'application/json'
-    },
-    body: JSON.stringify ({
-      image_id: id
-    })
-  })
-}
+
+
 
 ---------------------------------------------------------------------------
 
