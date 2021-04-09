@@ -16,9 +16,10 @@ fetch('http://mimicServer.example.com').then(function (response) {
 });
 
 // Creates a heart button
-$(".heart.fa").click(function() {
-  $(this).toggleClass("fa-heart fa-heart-o");
+$(".activated-heart.FULL_HEART").click(function() {
+  $(this).toggleClass("HEART_FULL EMPTY_HEART");
 });
+
 
 
 
